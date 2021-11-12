@@ -7,3 +7,16 @@
       file:
         path: /tmp/simple.txt
         state: touch
+    - name: Print home variable
+      shell:
+        cmd: echo $HOME
+      register: domov
+      debug:
+        var: domov
+
+    - name: Print hostname
+      shell:
+        cmd: hostname
+      register: hostik
+      debug:
+        var: hostik
