@@ -6,4 +6,4 @@
     - name: Create simple file
       file:
         path: /tmp/simple.txt
-        state: present
+        state: touch
