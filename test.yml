@@ -11,12 +11,12 @@
       shell:
         cmd: echo $HOME
       register: domov
-      debug:
+    - debug:
         var: domov
 
     - name: Print hostname
       shell:
         cmd: hostname
       register: hostik
-      debug:
+    - debug:
         var: hostik
