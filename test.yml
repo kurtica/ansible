@@ -1,0 +1,9 @@
+---
+- name: administrative playbook
+  hosts: 
+    - lj_ubuntu
+  tasks:
+    - name: Create simple file
+      file:
+        path: /tmp/simple.txt
+        state: present
