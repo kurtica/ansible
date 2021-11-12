@@ -1,0 +1,22 @@
+- become: yes
+  block:
+    - name: Install third party repos
+      dnf:
+        name: 
+          - https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+          - https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+        enablerepo: php:remi-8.0
+        state: present
+        disable_gpg_check: yes
+
+    - name: Install LAMP
+      dnf:
+        name:
+          - httpd
+          - php
+          - php-mysqlnd
+          - mariadb-server
+        state: present
+      notify:
+        - start httpd
+        - start mariadb

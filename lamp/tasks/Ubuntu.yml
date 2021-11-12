@@ -1,0 +1,6 @@
+- name: Add php8.0 repo
+  apt_repository:
+    repo: ppa:ondrej/php
+  become: yes
+  tags:
+    - packages

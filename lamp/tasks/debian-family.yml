@@ -1,0 +1,37 @@
+- debug:
+    var: ansible_lsb.codename
+
+- name: Install php8.0 prerequisities
+  apt:
+    name:
+      - gnupg
+      - lsb-release
+      - ca-certificates
+      - apt-transport-https
+      - software-properties-common
+    state: present
+    update_cache: yes
+  become: yes
+  tags:
+    - packages
+
+- name: Include Ubuntu/Debian specific file
+  include: "{{ ansible_distribution }}.yml"
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install LAMP
+  apt:
+    name:
+      - apache2
+      - php8.0
+      - php8.0-mysql
+      - mariadb-server
+      - mariadb-client
+    state: present
+    update_cache: yes
+  become: yes
+  notify:
+    - start apache2
+    - start mysql
+  tags:
+    - packages

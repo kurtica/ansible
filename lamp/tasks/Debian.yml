@@ -1,0 +1,11 @@
+- name: Add apt signing key for php8.0
+  become: yes
+  apt_key:
+    url: https://packages.sury.org/php/apt.gpg
+    keyring: /etc/apt/trusted.gpg.d/php.gpg
+
+- name: Add php repo
+  become: yes
+  apt_repository:
+    repo: "deb https://packages.sury.org/php/ {{ ansible_lsb.codename }} main"
+    filename: php
