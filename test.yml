@@ -1,7 +1,5 @@
 ---
 - name: administrative playbook
-  hosts: 
-    - lj_ubuntu
   tasks:
     - name: Create simple file
       file:
@@ -12,11 +10,11 @@
         cmd: echo $HOME
       register: domov
     - debug:
-        var: domov
+        var: domov.stdout
 
     - name: Print hostname
       shell:
         cmd: hostname
       register: hostik
     - debug:
-        var: hostik
+        var: hostik.stdout
