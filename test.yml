@@ -1,5 +1,6 @@
 ---
 - name: administrative playbook
+  hosts: all
   tasks:
     - name: Create simple file
       file:
